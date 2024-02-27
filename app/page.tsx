@@ -2,6 +2,7 @@ import Image from "next/image";
 import { LandingCarousel } from "./components/carousel";
 import { NavBar } from "./components/navbar";
 import { CategorySection } from "./components/category";
+import { ExploreSection } from "./components/explore";
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
       <NavBar />
       <LandingCarousel />
       <CategorySection />
+      <ExploreSection />
     </div>
   );
 }

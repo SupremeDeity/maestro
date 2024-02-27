@@ -18,7 +18,7 @@ function CategoryItem({
 export function CategorySection() {
   return (
     <div className="flex justify-center">
-      <div className="grid md:grid-cols-3 grid-cols-2 lg:grid-cols-6 mx-4 shadow text-sm font-semibold text-center divide-x divide-y uppercase bg-white rounded-lg border border-slate-300 divide-slate-200">
+      <div className="grid md:grid-cols-3 grid-cols-2 lg:grid-cols-6 mx-4 md:my-0 my-2 shadow text-sm font-semibold text-center divide-x divide-y uppercase bg-white rounded-lg border border-slate-300 divide-slate-200">
         <CategoryItem name="Groceries">
           <Apple className="h-8 w-full"/>
         </CategoryItem>

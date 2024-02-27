@@ -1,10 +1,11 @@
 import { Menu } from "lucide-react";
 import { kaushanScript } from "../fonts";
 import { BiCartAlt, BiSearch, BiUser } from "react-icons/bi";
+import { cn } from "@/lib/utils";
 
 export function NavBar() {
   return (
-    <div className="flex justify-between items-center p-4 shadow bg-white border-b border-b-slate-300 w-screen">
+    <div className="flex justify-between items-center p-4 shadow bg-white border-b border-b-slate-300 w-screen fixed z-50">
       <nav className="uppercase md:flex gap-x-4 text-sm font-medium hidden">
         <span className="hover:text-sakura transition-colors ease-in duration-200 cursor-pointer">
           Today&apos;s Pick
@@ -23,10 +24,10 @@ export function NavBar() {
         <Menu />
       </nav>
       <span
-        className={
-          kaushanScript.className +
-          " text-3xl text-sakura flex-1 text-center select-none"
-        }
+        className={cn(
+          kaushanScript.className,
+          "text-2xl sm:text-3xl text-sakura flex-1 text-center select-none"
+        )}
       >
         Maestro
       </span>
