@@ -1,7 +1,9 @@
 import { Menu } from "lucide-react";
 import { kaushanScript } from "../fonts";
-import { BiCartAlt, BiSearch, BiUser } from "react-icons/bi";
+import { BiSearch, BiUser } from "react-icons/bi";
 import { cn } from "@/lib/utils";
+import { CartButton } from "./cartbutton";
+
 
 export function NavBar() {
   return (
@@ -46,7 +48,7 @@ export function NavBar() {
           <div className="sm:hidden flex rounded hover:bg-slate-100 p-2">
             <BiSearch className="fill-slate-600 h-5 w-5" />
           </div>
-          <BiCartAlt className="h-9 w-9 px-2 fill-slate-600 hover:bg-slate-100 cursor-pointer transition-colors ease-in" />
+          <CartButton />
         </div>
         <div className="rounded-full bg-sakura size-8 cursor-pointer hover:bg-sakura/60  transition-colors ease-in">
           <BiUser className="w-full h-full p-1 fill-white" />

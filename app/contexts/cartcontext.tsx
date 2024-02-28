@@ -33,7 +33,5 @@ export function CartContextProvider({ children }: { children: ReactNode }) {
   const [cart, setCart] = useState<CartItem[]>([]);
   const value = { cart, setCart };
 
-  console.log(cart);
-
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }
