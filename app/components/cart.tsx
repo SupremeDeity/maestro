@@ -45,7 +45,7 @@ export function Cart({cart} : {cart: CartItem[]}) {
               ))}
             </ol>
             <div className="flex items-center justify-between w-full bg-slate-200 p-2 rounded-lg">
-              <div className="font-semibold">
+              <div className="font-semibold sm:text-base text-sm">
                 Total: $
                 <span>
                   {cart
@@ -73,10 +73,10 @@ const CartListItem = ({ cartItem }: { cartItem: CartItem }) => {
   return (
     <li
       key={cartItem.item.id}
-      className="flex bg-slate-100 border-slate-300 gap-x-4 px-4 items-center border rounded-lg p-2 justify-between"
+      className="flex bg-slate-100 border-slate-300 gap-x-4 sm:px-4 p-2 items-center border rounded-lg justify-between"
     >
-      <span>
-        <span className="text-sakura font-semibold text-sm">
+      <span className="sm:text-base text-sm">
+        <span className="text-sakura font-semibold sm:text-sm text-xs">
           (${cartItem.item.price})
         </span>{" "}
         {cartItem.item.name}
