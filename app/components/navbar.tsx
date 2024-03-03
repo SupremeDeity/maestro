@@ -7,7 +7,7 @@ import { CartButton } from "./cartbutton";
 
 export function NavBar() {
   return (
-    <div className="flex justify-between items-center p-4 shadow bg-white border-b border-b-slate-300 w-screen fixed z-50">
+    <div className="flex justify-between items-center p-4 shadow bg-white border-b border-b-slate-300 w-screen h-[72px] fixed z-50">
       <nav className="uppercase md:flex gap-x-4 text-sm font-medium hidden">
         <span className="hover:text-sakura transition-colors ease-in duration-200 cursor-pointer">
           Today&apos;s Pick
@@ -45,12 +45,9 @@ export function NavBar() {
               className="sm:text-sm bg-inherit w-60 py-2 pl-9 pr-3 focus:outline-none"
             />
           </div>
-          <div className="sm:hidden flex rounded hover:bg-slate-100 p-2">
-            <BiSearch className="fill-slate-600 h-5 w-5" />
-          </div>
           <CartButton />
         </div>
-        <div className="rounded-full bg-sakura size-8 cursor-pointer hover:bg-sakura/60  transition-colors ease-in">
+        <div className="rounded-full bg-sakura sm:size-8 cursor-pointer hover:bg-sakura/60  transition-colors ease-in">
           <BiUser className="w-full h-full p-1 fill-white" />
         </div>
       </div>

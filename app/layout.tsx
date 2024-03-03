@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn(poppins.className, "bg-gray-200 selection:bg-sakura selection:text-white")}>
+      <body className={cn(poppins.className, "bg-gray-200 selection:bg-sakura selection:text-white antialiased")}>
         <CartContextProvider>{children}</CartContextProvider>
         <Toaster />
       </body>

@@ -6,7 +6,7 @@ export async function ExploreSection() {
   const itms = await (await fetch("https://fakestoreapi.com/products")).json();
 
   return (
-    <div className="grid sm:mx-4 my-8 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 p-4 gap-6">
+    <div className="grid sm:mx-4 grid-cols-2 lg:grid-cols-4 md:grid-cols-3 p-4 gap-6">
       {itms.map((item: any) => (
         <GridItem
           key={item.id}

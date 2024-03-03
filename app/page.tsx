@@ -9,8 +9,10 @@ export default function Home() {
     <div className="h-screen">
       <NavBar />
       <LandingCarousel />
+      <div className="flex sm:flex-row flex-col "> 
       <CategorySection />
       <ExploreSection />
+      </div>
     </div>
   );
 }
