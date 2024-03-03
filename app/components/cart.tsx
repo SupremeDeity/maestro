@@ -1,4 +1,3 @@
-
 import { BiCaretRight, BiCartAlt, BiSad } from "react-icons/bi";
 import { cn } from "@/lib/utils";
 import {
@@ -12,7 +11,7 @@ import { Button } from "@/components/ui/button";
 import { CartItem } from "../contexts/cartcontext";
 import { CartAddButton } from "./cartbutton";
 
-export function Cart({cart} : {cart: CartItem[]}) {
+export function Cart({ cart }: { cart: CartItem[] }) {
   return (
     <Sheet>
       <SheetTrigger>
@@ -67,7 +66,6 @@ export function Cart({cart} : {cart: CartItem[]}) {
     </Sheet>
   );
 }
-
 
 const CartListItem = ({ cartItem }: { cartItem: CartItem }) => {
   return (

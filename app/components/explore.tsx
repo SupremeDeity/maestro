@@ -6,7 +6,7 @@ export async function ExploreSection() {
   const itms = await (await fetch("https://fakestoreapi.com/products")).json();
 
   return (
-    <div className="grid sm:mx-4 my-8 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 p-4 gap-2">
+    <div className="grid sm:mx-4 my-8 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 p-4 gap-6">
       {itms.map((item: any) => (
         <GridItem
           key={item.id}
@@ -38,13 +38,13 @@ function GridItem({
   description: string;
 }) {
   return (
-    <div className="hover:outline-blue-300 hover:outline rounded-lg border border-slate-300  bg-white overflow-hidden flex flex-col items-center gap-y-2">
+    <div className="hover:outline-blue-300 min-h-[370px] hover:outline rounded-lg border border-slate-300 bg-white overflow-hidden flex flex-col items-center gap-y-2">
       <Image
         src={itemImage}
         width={209}
         height={128}
         alt="item"
-        className="max-w-[256px] max-h-[256px] w-full h-full py-1"
+        className="max-w-[256px] max-h-[256px] w-full h-full p-2"
       />
       <span className="flex items-center justify-between w-full px-2 sm:px-4">
         <div className="flex items-center gap-1 sm:text-base text-sm">
@@ -62,7 +62,7 @@ function GridItem({
           }}
         />
       </span>
-      <div className="flex flex-col lg:flex-row text-sm self-start py-4 px-4 lg:px-6 lg:items-center justify-between w-full gap-x-4 h-[30%] lg:h-1/4  border-t border-t-slate-300">
+      <div className="flex flex-col lg:flex-row text-sm self-start py-4 px-4 lg:px-6 lg:items-center justify-between w-full gap-x-4 h-[30%] lg:h-1/4  border-t overflow-y- border-t-slate-300">
         <span className="line-clamp-2 sm:text-base text-xs">{itemName}</span>
         <span className="text-sakura font-semibold">${itemPrice}</span>
       </div>

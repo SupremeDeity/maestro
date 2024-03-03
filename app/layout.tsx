@@ -2,9 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { poppins } from "./fonts";
 import { Toaster } from "@/components/ui/sonner";
-import {
-  CartContextProvider,
-} from "./contexts/cartcontext";
+import { CartContextProvider } from "./contexts/cartcontext";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Maestro",
@@ -18,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={poppins.className + " bg-gray-200"}>
+      <body className={cn(poppins.className, "bg-gray-200 selection:bg-sakura selection:text-white")}>
         <CartContextProvider>{children}</CartContextProvider>
         <Toaster />
       </body>
