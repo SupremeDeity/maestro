@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { FaStar } from "react-icons/fa6";
 import { CartAddButton } from "./cartbutton";
+import Link from "next/link";
 
 export async function ExploreSection() {
   const itms = await (await fetch("https://fakestoreapi.com/products")).json();
@@ -11,7 +12,6 @@ export async function ExploreSection() {
         <GridItem
           key={item.id}
           id={item.id}
-          description={item.description}
           itemName={item.title}
           itemPrice={item.price}
           itemImage={item.image}
@@ -28,17 +28,15 @@ function GridItem({
   itemPrice,
   itemImage,
   itemRating,
-  description,
 }: {
   id: string;
   itemName: string;
   itemPrice: string;
   itemImage: string;
   itemRating: string;
-  description: string;
 }) {
   return (
-    <div className="hover:outline-blue-300 min-h-[370px] hover:outline rounded-lg border border-slate-300 bg-white overflow-hidden flex flex-col items-center gap-y-2">
+    <Link href={"/overview/" + id} className="hover:outline-blue-300 min-h-[370px] hover:outline rounded-lg border border-slate-300 bg-white overflow-hidden flex flex-col items-center gap-y-2">
       <Image
         src={itemImage}
         width={209}
@@ -53,12 +51,12 @@ function GridItem({
         <CartAddButton
           item={{
             count: 0,
-            item: {id: id,
-            description: description,
-            image: itemImage,
-            name: itemName,
-            price: itemPrice,
-            rating: itemRating,}
+            item: {
+              id: id,
+              image: itemImage,
+              name: itemName,
+              price: itemPrice,
+            },
           }}
         />
       </span>
@@ -66,6 +64,6 @@ function GridItem({
         <span className="line-clamp-2 sm:text-base text-xs">{itemName}</span>
         <span className="text-sakura font-semibold">${itemPrice}</span>
       </div>
-    </div>
+    </Link>
   );
 }

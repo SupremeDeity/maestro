@@ -3,17 +3,9 @@ import { useContext, useEffect, useState } from "react";
 import { toast } from "sonner";
 import { CartContext, CartItem, Item } from "../contexts/cartcontext";
 import { MdAddShoppingCart } from "react-icons/md";
-import { BiCaretRight, BiCartAlt, BiMinus, BiSad } from "react-icons/bi";
-import { cn } from "@/lib/utils";
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import { ArrowRight, Loader2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { BiMinus } from "react-icons/bi";
+
+import { Loader2 } from "lucide-react";
 import { Cart } from "./cart";
 
 export function CartAddButton({
@@ -40,7 +32,7 @@ export function CartAddButton({
   if (!mounted) {
     return (
       <div>
-        <Loader2 className="animate-spin h-9 w-9 px-2 " />
+        <Loader2 className="animate-spin sm:size-9 size-5 px-2 " />
       </div>
     );
   }

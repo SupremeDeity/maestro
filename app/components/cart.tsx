@@ -19,13 +19,13 @@ export function Cart({ cart }: { cart: CartItem[] }) {
           <span
             className={cn(
               cart.length <= 0 ? "hidden" : "flex",
-              "absolute left-5 top-1"
+              "absolute sm:left-5 left-4 top-1"
             )}
           >
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sakura/60"></span>
             <span className="relative inline-flex rounded-full sm:size-3 size-2 bg-red-400"></span>
           </span>
-          <BiCartAlt className="sm:size-9 size-8 sm:px-2 px-1 fill-slate-600 hover:bg-slate-100 cursor-pointer transition-colors ease-in" />
+          <BiCartAlt className="sm:size-9 size-7 sm:px-2 px-1 fill-slate-600 hover:bg-slate-100 cursor-pointer transition-colors ease-in" />
         </div>
       </SheetTrigger>
       <SheetContent>

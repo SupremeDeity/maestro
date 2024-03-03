@@ -10,8 +10,6 @@ import {
 export interface Item {
   id: string;
   name: string;
-  description: string;
-  rating: string;
   price: string;
   image: string;
 }

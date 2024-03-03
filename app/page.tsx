@@ -6,8 +6,7 @@ import { ExploreSection } from "./components/explore";
 
 export default function Home() {
   return (
-    <div className="h-screen">
-      <NavBar />
+    <div className="">
       <LandingCarousel />
       <div className="flex sm:flex-row flex-col "> 
       <CategorySection />

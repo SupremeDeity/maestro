@@ -33,7 +33,7 @@ export function NavBar() {
       >
         Maestro
       </span>
-      <div className="flex items-center gap-x-4">
+      <div className="flex items-center sm:gap-x-4 gap-x-2">
         <div className="bg-white overflow-hidden flex items-center rounded-md sm:shadow border border-slate-300 divide-x divide-slate-300 border-l-0 sm:border-l">
           <div className="relative hover:bg-slate-100  transition-colors ease-in hidden sm:flex">
             <div className="absolute inset-y-0 left-0 flex items-center pl-2 pointer-events-none">

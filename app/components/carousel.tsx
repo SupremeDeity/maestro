@@ -22,7 +22,7 @@ export function LandingCarousel() {
     <Carousel 
     plugins={[plugin.current]}
     >
-      <CarouselContent className="select-none mt-[72px]">
+      <CarouselContent className="select-none">
         <CarouselItem className="border-b border-b-slate-300 h-[400px] overflow-hidden">
           <div className="bg-gradient-to-r h-full w-full from-sakura/40 to-white/50 flex sm:flex-row flex-col items-center justify-around">
             <div className=" text-5xl leading-[40px] sm:text-7xl sm:leading-[60px] uppercase font-semibold drop-shadow-[2px_4px_0px_theme(colors.pink.600)]">
