@@ -16,9 +16,10 @@ export async function generateStaticParams() {
 export default async function ItemOverview({
   params,
 }: {
-  params: { id: string };
+  params: { id: number };
 }) {
-  if (Number.parseInt(params.id) > 20) return notFound();
+
+  if (params.id > 20) return notFound();
   const itemRes = await fetch("https://fakestoreapi.com/products/" + params.id);
   const item = await itemRes.json();
 

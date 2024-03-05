@@ -11,7 +11,7 @@ export function CartButtonActions({
   showToast,
   count,
 }: {
-  id: string;
+  id: number;
   showToast: boolean;
   count: number;
 }) {

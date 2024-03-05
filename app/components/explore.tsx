@@ -29,7 +29,7 @@ function GridItem({
   itemImage,
   itemRating,
 }: {
-  id: string;
+  id: number;
   itemName: string;
   itemPrice: string;
   itemImage: string;

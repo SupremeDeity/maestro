@@ -2,7 +2,7 @@
 
 import { cookies } from "next/headers";
 
-export async function addToCart(id: string) {
+export async function addToCart(id: number) {
   const cookieStore = cookies();
   const cart = cookieStore.get("cart");
   if (!cart) cookieStore.set("cart", JSON.stringify([id]));
@@ -17,7 +17,7 @@ export async function getCart() {
   return cookieStore.get("cart");
 }
 
-export async function undoAdd(id: string) {
+export async function undoAdd(id: number) {
   const cookieStore = cookies();
   const cart = cookieStore.get("cart");
   if (!cart) return;
@@ -28,7 +28,6 @@ export async function undoAdd(id: string) {
   if (indexToRemove !== -1) {
     cartArr.splice(indexToRemove, 1);
   }
-  
 
   cookieStore.set("cart", JSON.stringify(cartArr));
 }

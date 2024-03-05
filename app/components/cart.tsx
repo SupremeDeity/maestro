@@ -1,4 +1,4 @@
-import { BiCaretRight, BiCartAlt, BiMinus, BiSad } from "react-icons/bi";
+import { BiCaretRight, BiCartAlt, BiSad } from "react-icons/bi";
 import { cn } from "@/lib/utils";
 import {
   Sheet,
@@ -8,13 +8,11 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { addToCart, getCart, undoAdd } from "../actions/cart_actions";
-import { toast } from "sonner";
-import { MdAddShoppingCart } from "react-icons/md";
+import { getCart } from "../actions/cart_actions";
 import { CartButtonActions } from "./cartbutton";
 
 export async function Cart() {
-  const cart: Array<string> = JSON.parse((await getCart())?.value ?? "[]");
+  const cart: Array<number> = JSON.parse((await getCart())?.value ?? "[]");
   const cartUnique =
     cart.length === 0
       ? []
@@ -61,7 +59,7 @@ export async function Cart() {
           <div className="flex flex-col justify-between w-full h-full py-6">
             <ol className="flex flex-col gap-y-2 overflow-scroll mb-2">
               {cartUnique &&
-                cartUnique.map((cartItem: string) => (
+                cartUnique.map((cartItem: number) => (
                   <CartListItem key={cartItem} id={cartItem} />
                 ))}
             </ol>
@@ -80,7 +78,7 @@ export async function Cart() {
   );
 }
 
-const CartListItem = async ({ id }: { id: string }) => {
+const CartListItem = async ({ id }: { id: number }) => {
   const res = await fetch("https://fakestoreapi.com/products/" + id);
   const item = await res.json();
   return (
@@ -106,12 +104,13 @@ export async function CartAddButton({
   id,
   showToast = true,
 }: {
-  id: string;
+  id: any;
   showToast?: boolean;
 }) {
+  id = Number.parseInt(id)
   const updatedCart = await getCart();
   const cartArr = JSON.parse(updatedCart?.value ?? "[]");
-  const c = cartArr.filter((cId: string) => cId === id).length;
+  const c = cartArr.filter((cId: number) => cId === id).length;
 
   return (
     <div className="flex border border-slate-300 divide-slate-300 rounded divide-x overflow-hidden">
