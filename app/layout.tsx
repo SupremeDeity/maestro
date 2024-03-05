@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { poppins } from "./fonts";
 import { Toaster } from "@/components/ui/sonner";
-import { CartContextProvider } from "./contexts/cartcontext";
 import { cn } from "@/lib/utils";
 import { NavBar } from "./components/navbar";
 
@@ -24,12 +23,10 @@ export default function RootLayout({
           "bg-gray-200 selection:bg-sakura selection:text-white antialiased h-screen"
         )}
       >
-        <CartContextProvider>
           <NavBar />
           <div className="pt-[72px]">
           {children}
           </div>
-        </CartContextProvider>
         <Toaster />
       </body>
     </html>
