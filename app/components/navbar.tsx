@@ -2,7 +2,8 @@ import { Menu } from "lucide-react";
 import { kaushanScript } from "../fonts";
 import { BiSearch, BiUser } from "react-icons/bi";
 import { cn } from "@/lib/utils";
-import { CartButton } from "./cartbutton";
+import Link from "next/link";
+import { Cart } from "./cart";
 
 
 export function NavBar() {
@@ -25,14 +26,15 @@ export function NavBar() {
       <nav className="md:hidden flex">
         <Menu />
       </nav>
-      <span
+      <Link
+      href="/"
         className={cn(
           kaushanScript.className,
           "text-2xl sm:text-3xl text-sakura flex-1 text-center select-none"
         )}
       >
         Maestro
-      </span>
+      </Link>
       <div className="flex items-center sm:gap-x-4 gap-x-2">
         <div className="bg-white overflow-hidden flex items-center rounded-md sm:shadow border border-slate-300 divide-x divide-slate-300 border-l-0 sm:border-l">
           <div className="relative hover:bg-slate-100  transition-colors ease-in hidden sm:flex">
@@ -45,7 +47,7 @@ export function NavBar() {
               className="sm:text-sm bg-inherit w-60 py-2 pl-9 pr-3 focus:outline-none"
             />
           </div>
-          <CartButton />
+          <Cart />
         </div>
         <div className="rounded-full bg-sakura sm:size-8 cursor-pointer hover:bg-sakura/60  transition-colors ease-in">
           <BiUser className="w-full h-full p-1 fill-white" />

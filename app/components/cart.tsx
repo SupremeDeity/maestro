@@ -1,4 +1,4 @@
-import { BiCaretRight, BiCartAlt, BiSad } from "react-icons/bi";
+import { BiCaretRight, BiCartAlt, BiMinus, BiSad } from "react-icons/bi";
 import { cn } from "@/lib/utils";
 import {
   Sheet,
@@ -8,17 +8,38 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { CartItem } from "../contexts/cartcontext";
-import { CartAddButton } from "./cartbutton";
+import { addToCart, getCart, undoAdd } from "../actions/cart_actions";
+import { toast } from "sonner";
+import { MdAddShoppingCart } from "react-icons/md";
+import { CartButtonActions } from "./cartbutton";
 
-export function Cart({ cart }: { cart: CartItem[] }) {
+export async function Cart() {
+  const cart: Array<string> = JSON.parse((await getCart())?.value ?? "[]");
+  const cartUnique =
+    cart.length === 0
+      ? []
+      : cart.filter((item, index) => {
+          return cart.indexOf(item) === index;
+        });
+  const cartCount = cart?.length ?? 0;
+  // const productList = await (
+  //   await fetch("https://fakestoreapi.com/products")
+  // ).json();
+  // const totalPrice = cart.reduce((total, productId) => {
+  //   const product = productList.find((p: any) => p.id === productId);
+  //   return product
+  //     ? total + product.price * cart.filter((id) => id === productId).length
+  //     : total;
+  // }, 0);
+
+
   return (
     <Sheet>
       <SheetTrigger>
         <div className="relative">
           <span
             className={cn(
-              cart.length <= 0 ? "hidden" : "flex",
+              cartCount <= 0 ? "hidden" : "flex",
               "absolute sm:left-5 left-4 top-1"
             )}
           >
@@ -32,29 +53,21 @@ export function Cart({ cart }: { cart: CartItem[] }) {
         <SheetHeader>
           <SheetTitle className="uppercase">Cart</SheetTitle>
         </SheetHeader>
-        {cart.length <= 0 ? (
+        {cartCount <= 0 ? (
           <div className="flex flex-col justify-center items-center text-xl text-slate-600 h-full">
             <BiSad className="text-6xl" /> No items in cart.
           </div>
         ) : (
           <div className="flex flex-col justify-between w-full h-full py-6">
             <ol className="flex flex-col gap-y-2 overflow-scroll mb-2">
-              {cart.map((cartItem) => (
-                <CartListItem key={cartItem.item.id} cartItem={cartItem} />
-              ))}
+              {cartUnique &&
+                cartUnique.map((cartItem: string) => (
+                  <CartListItem key={cartItem} id={cartItem} />
+                ))}
             </ol>
             <div className="flex items-center justify-between w-full bg-slate-200 p-2 rounded-lg">
               <div className="font-semibold sm:text-base text-sm">
-                Total: $
-                <span>
-                  {cart
-                    .reduce((acc, curr) => {
-                      return (
-                        acc + Number.parseFloat(curr.item.price) * curr.count
-                      );
-                    }, 0)
-                    .toFixed(2)}
-                </span>
+                {/* Total: $<span>{totalPrice}</span> */}
               </div>
               <Button>
                 Checkout <BiCaretRight />
@@ -67,21 +80,42 @@ export function Cart({ cart }: { cart: CartItem[] }) {
   );
 }
 
-const CartListItem = ({ cartItem }: { cartItem: CartItem }) => {
+const CartListItem = async ({ id }: { id: string }) => {
+  const res = await fetch("https://fakestoreapi.com/products/" + id);
+  const item = await res.json();
   return (
     <li
-      key={cartItem.item.id}
+      key={id}
       className="flex bg-slate-100 border-slate-300 gap-x-4 sm:px-4 p-2 items-center border rounded-lg justify-between"
     >
       <span className="sm:text-base text-sm">
         <span className="text-sakura font-semibold sm:text-sm text-xs">
-          (${cartItem.item.price})
+          (${item.price})
         </span>{" "}
-        {cartItem.item.name}
+        {item.title}
       </span>
       <div>
-        <CartAddButton item={cartItem} showToast={false} />
+        <CartAddButton id={id} showToast={false} />
       </div>
     </li>
   );
 };
+
+
+export async function CartAddButton({
+  id,
+  showToast = true,
+}: {
+  id: string;
+  showToast?: boolean;
+}) {
+  const updatedCart = await getCart();
+  const cartArr = JSON.parse(updatedCart?.value ?? "[]");
+  const c = cartArr.filter((cId: string) => cId === id).length;
+
+  return (
+    <div className="flex border border-slate-300 divide-slate-300 rounded divide-x overflow-hidden">
+      <CartButtonActions id={id} count={c} showToast={showToast} />
+    </div>
+  );
+}

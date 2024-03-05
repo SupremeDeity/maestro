@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { FaStar } from "react-icons/fa6";
-import { CartAddButton } from "./cartbutton";
 import Link from "next/link";
+import { CartAddButton } from "./cart";
 
 export async function ExploreSection() {
   const itms = await (await fetch("https://fakestoreapi.com/products")).json();
@@ -49,15 +49,7 @@ function GridItem({
           <FaStar className="fill-yellow-400" /> {itemRating}
         </div>
         <CartAddButton
-          item={{
-            count: 0,
-            item: {
-              id: id,
-              image: itemImage,
-              name: itemName,
-              price: itemPrice,
-            },
-          }}
+          id={id}
         />
       </span>
       <div className="flex flex-col lg:flex-row text-sm self-start py-4 px-4 lg:px-6 lg:items-center justify-between w-full gap-x-4 h-[30%] lg:h-1/4  border-t overflow-y- border-t-slate-300">
