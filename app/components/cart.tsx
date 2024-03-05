@@ -20,15 +20,15 @@ export async function Cart() {
           return cart.indexOf(item) === index;
         });
   const cartCount = cart?.length ?? 0;
-  // const productList = await (
-  //   await fetch("https://fakestoreapi.com/products")
-  // ).json();
-  // const totalPrice = cart.reduce((total, productId) => {
-  //   const product = productList.find((p: any) => p.id === productId);
-  //   return product
-  //     ? total + product.price * cart.filter((id) => id === productId).length
-  //     : total;
-  // }, 0);
+  const productList = await (
+    await fetch("https://fakestoreapi.com/products")
+  ).json();
+  const totalPrice = cartUnique.reduce((total, productId) => {
+    const product = productList.find((p: any) => p.id === productId);
+    const price = total + product.price * cart.filter((val) => val === productId).length;
+
+    return Number.parseFloat(price.toFixed(2));
+  }, 0);
 
 
   return (
@@ -65,7 +65,7 @@ export async function Cart() {
             </ol>
             <div className="flex items-center justify-between w-full bg-slate-200 p-2 rounded-lg">
               <div className="font-semibold sm:text-base text-sm">
-                {/* Total: $<span>{totalPrice}</span> */}
+                Total: $<span>{totalPrice}</span>
               </div>
               <Button>
                 Checkout <BiCaretRight />
