@@ -1,7 +1,6 @@
 import { CartAddButton } from "@/app/components/cart";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { BiStar } from "react-icons/bi";
 import { FaStar } from "react-icons/fa6";
 
 export async function generateStaticParams() {
@@ -75,7 +74,7 @@ export default async function ItemOverview({
   );
 }
 
-export function RatingListItem() {
+function RatingListItem() {
   return (
     <div className="bg-gray-200 w-full rounded-lg p-3">
       <div className="flex items-center gap-2">
